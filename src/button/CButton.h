@@ -1,13 +1,12 @@
 #ifndef CBUTTON_H_INCLUDED
 #define CBUTTON_H_INCLUDED
 
-class CButton : public sf::Drawable {
+#include "../UI/CUIKit.h"
+
+class CButton : public sf::Drawable, public CUIKit {
 private:
-    sf::RenderWindow * window;
     sf::String title;
     sf::IntRect * rect;
-    bool clicked;
-    bool focused;
     sf::Vector2i mousePos;
     sf::RectangleShape shape;
 public:
@@ -19,10 +18,15 @@ public:
     bool isFocused();
     ~CButton();
     void stateProvider();
+    virtual void onFocus();
+    virtual void onClick();
+    virtual void onDisable();
+    virtual void onActive();
 protected:
-    bool mousePointerInRect();
     void setFocus(bool);
+    void setClick(bool);
 private:
+    bool mousePointerInRect();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

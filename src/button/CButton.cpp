@@ -22,26 +22,51 @@ bool CButton::isClicked() {
     return this->clicked;
 }
 
+bool CButton::isFocused() {
+    return this->focused;
+}
+
 bool CButton::mousePointerInRect() {
     this->mousePos = sf::Mouse::getPosition(*window);
-    return this->rect->contains(mousePos);
+    return this->rect->contains(this->mousePos);
 }
+
 void CButton::setFocus(bool which) {
     this->focused = which;
 }
+
+void CButton::setClick(bool which) {
+    this->clicked = which;
+}
+
 void CButton::stateProvider() {
     setFocus(mousePointerInRect());
+    setClick(mousePointerInRect() && sf::Mouse::isButtonPressed(sf::Mouse::Left));
     shape.setPosition(rect->left, rect->top);
     shape.setSize(sf::Vector2f(rect->width, rect->height));
-    if(this->focused) {
-        shape.setFillColor(sf::Color::Green);
-        #ifdef _DEBUG
-            cout << "Button focused." << endl;
-        #endif // _DEBUG
-    }
-    else {
-        shape.setFillColor(sf::Color::Red);
-    }
+    if(this->clicked) this->onClick();
+    else if(this->focused) this->onFocus();
+    else this->onActive();
+}
+
+void CButton::onActive() {
+    shape.setFillColor(sf::Color::Red);
+}
+
+void CButton::onDisable() {}
+
+void CButton::onFocus() {
+    shape.setFillColor(sf::Color::Green);
+    #ifdef _DEBUG
+    cout << "Button focused." << endl;
+    #endif // _DEBUG
+}
+
+void CButton::onClick() {
+    shape.setFillColor(sf::Color::Blue);
+    #ifdef _DEBUG
+    cout << "Button clicked." << endl;
+    #endif // _DEBUG
 }
 
 void CButton::draw(sf::RenderTarget &target,sf::RenderStates states ) const {

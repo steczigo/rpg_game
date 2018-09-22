@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-D_DEBUG" />
 				</Compiler>
 				<Linker>
 					<Add library="C:/Sfml242/lib/libsfml-audio-s-d.a" />
@@ -29,6 +30,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-D_RELEASE" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,7 +52,11 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CScreen.cpp" />
 		<Unit filename="src/CScreen.h" />
+		<Unit filename="src/UI/CFrame.h" />
+		<Unit filename="src/UI/CUIKit.h" />
 		<Unit filename="src/button/CButton.cpp" />
+		<Unit filename="src/button/CButton.h" />
+		<Unit filename="src/button/CButtonState.h" />
 		<Unit filename="src/menu/CMainScreen.cpp" />
 		<Unit filename="src/menu/CMainScreen.h" />
 		<Extensions>
