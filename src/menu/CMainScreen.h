@@ -6,21 +6,13 @@
 #include "../button/CButton.h"
 
 class CMainScreen : public CScreen {
-// Variables
-public:
-
-protected:
-
 private:
     CButton* przycisk;
-    sf::RenderWindow *window;
 
 //Methods
 public:
     CMainScreen(sf::RenderWindow *window);
     virtual int run();
-protected:
-
 private:
     void showMenu();
 };
