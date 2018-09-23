@@ -14,7 +14,7 @@ CMainScreen::CMainScreen(sf::RenderWindow *window, sf::Texture* tx) {
 }
 
 int CMainScreen::run() {
-    this->przycisk->setRect(sf::IntRect(50, 10, 150, 30));
+    this->przycisk->setRect(sf::Vector2i(50, 10), sf::Vector2i(150, 30));
     this->background = new sf::Sprite();
     this->background->setTexture(*this->backgroundTexture);
     //this->background->setScale(1.2, 1.2);

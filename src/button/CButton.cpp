@@ -28,7 +28,8 @@ bool CButton::isFocused() {
 
 bool CButton::mousePointerInRect() {
     this->mousePos = sf::Mouse::getPosition(*window);
-    return this->rect->contains(this->mousePos);
+    sf::Vector2f pos = this->window->mapPixelToCoords(this->mousePos);
+    return this->rect->contains(pos.x, pos.y);
 }
 
 void CButton::setFocus(bool which) {
@@ -71,6 +72,10 @@ void CButton::onClick() {
 
 void CButton::draw(sf::RenderTarget &target,sf::RenderStates states ) const {
     target.draw(shape);
+}
+
+void CButton::loadGUIFile(sf::Texture* t) {
+    this->texture = t;
 }
 
 CButton::~CButton() {

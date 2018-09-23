@@ -2,11 +2,13 @@
 #define CSCREEN_H_INCLUDED
 
 #include <vector>
+#include "UI/CUIKit.h"
 
 class CScreen {
-public:
-    //std::vector<CUIKit> fd;
+protected:
     sf::RenderWindow *window;
+    std::vector<CUIKit> components;
+public:
     virtual int run() = 0;
 };
 

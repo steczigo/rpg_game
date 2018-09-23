@@ -5,6 +5,7 @@ class CUIKit {
 protected:
     bool clicked;
     bool focused;
+    bool disabled;
 
     sf::RenderWindow * window;
 
@@ -13,10 +14,21 @@ protected:
     sf::Sprite focus;
     sf::Sprite disable;
 
+public:
+    sf::Sprite getActivedSprite() { return this->active; }
+    sf::Sprite getClickedSprite() { return this->click; }
+    sf::Sprite getFocusedSprite() { return this->focus; }
+    sf::Sprite getDisabledSprite() { return this->disable; }
+    void setActivedSprite(sf::Sprite spr) { this->active = spr; }
+    void setClickedSprite(sf::Sprite spr) { this->click = spr; }
+    void setFocusedSprite(sf::Sprite spr) { this->focus = spr; }
+    void setDisabledSprite(sf::Sprite spr) { this->disable = spr; }
+protected:
     virtual void onClick() = 0;
     virtual void onFocus() = 0;
     virtual void onActive() = 0;
     virtual void onDisable() = 0;
+
 };
 
 #endif // CUIKIT_H_INCLUDED

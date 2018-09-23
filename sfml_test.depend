@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1537640631 source:c:\users\admin\documents\workspace\sfml_test\main.cpp
+1537695107 source:c:\users\admin\documents\workspace\sfml_test\main.cpp
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -400,23 +400,24 @@
 	"../button/CButton.h"
 	"../UI/CUIKit.h"
 
-1537650527 source:c:\users\admin\documents\workspace\sfml_test\src\menu\cmainscreen.cpp
+1537691668 source:c:\users\admin\documents\workspace\sfml_test\src\menu\cmainscreen.cpp
 	"CMainScreen.h"
 
-1537650435 source:c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.cpp
+1537695115 source:c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.cpp
 	<SFML/Graphics.hpp>
 	"CButton.h"
 	<iostream>
 
-1537645138 c:\users\admin\documents\workspace\sfml_test\src\cscreen.h
+1537691092 c:\users\admin\documents\workspace\sfml_test\src\cscreen.h
 	<vector>
+	"UI/CUIKit.h"
 
 1537545968 source:c:\users\admin\documents\workspace\sfml_test\src\cscreen.cpp
 	<SFML/Graphics.hpp>
 	"CScreen.h"
 
-1537650014 c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.h
+1537692199 c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.h
 	"../UI/CUIKit.h"
 
-1537649679 c:\users\admin\documents\workspace\sfml_test\src\ui\cuikit.h
+1537690830 c:\users\admin\documents\workspace\sfml_test\src\ui\cuikit.h
 

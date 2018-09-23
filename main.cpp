@@ -11,8 +11,10 @@ sf::RenderWindow * window;
 int main() {
     srand(time(NULL));
     setlocale(LC_ALL, "");
+    vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     window = new sf::RenderWindow();
-    window->create(sf::VideoMode(1920,1080), "Gra RPG", sf::Style::Fullscreen);
+    window->create(modes.at(0), "Gra RPG", sf::Style::Fullscreen);
+    modes.clear();
     window->setActive(true);
     window->setPosition(sf::Vector2i(10, 10));
     sf::Event event;
@@ -22,7 +24,7 @@ int main() {
         cout << "(\"images/ui_active.png\") Loading resource failed!" << endl;
         #endif // _DEBUG
     }
-    if(!uiDisabled.loadFromFile("images/ui_disabled.png")) {
+    if(!uiDisabled.loadFromFile("images/ui_disable.png")) {
         #ifdef _DEBUG
         cout << "(\"images/ui_disabled.png\") Loading resource failed!" << endl;
         #endif // _DEBUG
