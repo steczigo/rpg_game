@@ -21,13 +21,13 @@ CMainScreen::CMainScreen(sf::RenderWindow *window, sf::Texture* tx) {
 }
 
 int CMainScreen::run() {
-    this->przycisk->setRect(sf::Vector2i(50, 10), sf::Vector2i(150, 30));
+    this->przycisk->setRect(sf::Vector2i(50, 10), sf::Vector2i(284, 55));
     this->background = new sf::Sprite();
     this->background->setTexture(*this->backgroundTexture);
     //this->background->setScale(1.2, 1.2);
     sf::Event event;
     while(window->pollEvent(event)) {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || sf::Event::Closed ) window->close();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || (event.type == sf::Event::Closed)) window->close();
     }
     przycisk->stateProvider();
     window->draw(*background);
