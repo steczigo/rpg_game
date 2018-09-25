@@ -16,6 +16,7 @@ void CButton::setRect(sf::IntRect r) {
 
 CButton::CButton(sf::RenderWindow* r) {
     this->window = r;
+    current = new sf::Sprite();
 }
 
 bool CButton::isClicked() {
@@ -41,43 +42,52 @@ void CButton::setClick(bool which) {
 }
 
 void CButton::stateProvider() {
+    current = &active;
     setFocus(mousePointerInRect());
     setClick(mousePointerInRect() && sf::Mouse::isButtonPressed(sf::Mouse::Left));
-    shape.setPosition(rect->left, rect->top);
-    shape.setSize(sf::Vector2f(rect->width, rect->height));
+    current->setPosition(rect->left, rect->top);
+    //shape.setPosition(rect->left, rect->top);
+    //shape.setSize(sf::Vector2f(rect->width, rect->height));
     if(this->clicked) this->onClick();
     else if(this->focused) this->onFocus();
     else this->onActive();
 }
 
 void CButton::onActive() {
-    shape.setFillColor(sf::Color::Red);
+    current = &active;
 }
 
 void CButton::onDisable() {}
 
 void CButton::onFocus() {
-    shape.setFillColor(sf::Color::Green);
+    current = &focus;
     #ifdef _DEBUG
     cout << "Button focused." << endl;
     #endif // _DEBUG
 }
 
 void CButton::onClick() {
-    shape.setFillColor(sf::Color::Blue);
+    current = &click;
     #ifdef _DEBUG
     cout << "Button clicked." << endl;
     #endif // _DEBUG
 }
 
 void CButton::draw(sf::RenderTarget &target,sf::RenderStates states ) const {
-    target.draw(shape);
+    target.draw(*current);
 }
 
 void CButton::loadGUIFile(sf::Texture* t) {
     this->texture = t;
+    active.setTexture(*t);
+    active.setTextureRect(sf::IntRect(13,126,284,55));
+    click.setTexture(*t);
+    click.setTextureRect(sf::IntRect(13,204,284,55));
+    focus.setTexture(*t);
+    focus.setTextureRect(sf::IntRect(13,282,284,55));
+    current = &active;
 }
 
 CButton::~CButton() {
-    delete rect;
+    delete rect, current;
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "src/menu/CMainScreen.h"
+#include "src/UI/CCursor.h"
 
 using namespace std;
 
@@ -13,10 +14,16 @@ int main() {
     setlocale(LC_ALL, "");
     vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     window = new sf::RenderWindow();
+    #ifdef _DEBUG
+    cout << "Run in debug mode." << endl;
+    window->create(sf::VideoMode(800, 600), "Gra RPG");
+    #else
+    cout << "Run in release mode." << endl;
     window->create(modes.at(0), "Gra RPG", sf::Style::Fullscreen);
+    #endif
     modes.clear();
     window->setActive(true);
-    window->setPosition(sf::Vector2i(10, 10));
+    window->setFramerateLimit(60);
     sf::Event event;
     sf::Texture uiActive, uiDisabled, mainscr;
     if(!uiActive.loadFromFile("images/ui_active.png")) {
@@ -34,14 +41,16 @@ int main() {
         cout << "(\"images/mainscreen.png\") Loading resource failed!" << endl;
         #endif // _DEBUG
     }
-    CMainScreen * mainScreen = new CMainScreen(window, &mainscr);
+    CCursor* mousePointer = new CCursor(window, uiActive);
+    CMainScreen* mainScreen = new CMainScreen(window, &mainscr);
     while(window->isOpen()) {
         window->clear(sf::Color::White);
         switch(mainScreen->run()) {
 
         }
+        mousePointer->run();
         window->display();
     }
-    delete window, mainScreen;
+    delete window, mainScreen, mousePointer;
     return 0;
 }

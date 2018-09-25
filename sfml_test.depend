@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1537695107 source:c:\users\admin\documents\workspace\sfml_test\main.cpp
+1537910365 source:c:\users\admin\documents\workspace\sfml_test\main.cpp
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
 	<vector>
 	"src/menu/CMainScreen.h"
+	"src/UI/CCursor.h"
 
 1486739998 c:\sfml242\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -400,10 +401,11 @@
 	"../button/CButton.h"
 	"../UI/CUIKit.h"
 
-1537691668 source:c:\users\admin\documents\workspace\sfml_test\src\menu\cmainscreen.cpp
+1537910675 source:c:\users\admin\documents\workspace\sfml_test\src\menu\cmainscreen.cpp
 	"CMainScreen.h"
+	<iostream>
 
-1537695115 source:c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.cpp
+1537910317 source:c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.cpp
 	<SFML/Graphics.hpp>
 	"CButton.h"
 	<iostream>
@@ -419,5 +421,11 @@
 1537692199 c:\users\admin\documents\workspace\sfml_test\src\button\cbutton.h
 	"../UI/CUIKit.h"
 
-1537690830 c:\users\admin\documents\workspace\sfml_test\src\ui\cuikit.h
+1537906859 c:\users\admin\documents\workspace\sfml_test\src\ui\cuikit.h
+
+1537906377 source:c:\users\admin\documents\workspace\sfml_test\src\ui\ccursor.cpp
+	<SFML/Graphics.hpp>
+	"CCursor.h"
+
+1537906313 c:\users\admin\documents\workspace\sfml_test\src\ui\ccursor.h
 

@@ -14,6 +14,8 @@ protected:
     sf::Sprite focus;
     sf::Sprite disable;
 
+    sf::Sprite* current;
+
 public:
     sf::Sprite getActivedSprite() { return this->active; }
     sf::Sprite getClickedSprite() { return this->click; }
