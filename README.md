@@ -1,2 +1,2 @@
 # rpg_game
-Making RPG Game for project for CV.
+Making RPG Game project for CV.
