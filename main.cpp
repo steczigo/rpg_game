@@ -12,16 +12,16 @@ sf::RenderWindow * window;
 int main() {
     srand(time(NULL));
     setlocale(LC_ALL, "");
-    vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
     window = new sf::RenderWindow();
-    #ifdef _DEBUG
-    cout << "Run in debug mode." << endl;
-    window->create(sf::VideoMode(800, 600), "Gra RPG");
+    #ifdef _RELEASE
+        cout << "Run in release mode." << endl;
+        vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+        window->create(modes.at(0), "Gra RPG", sf::Style::Fullscreen);
+        modes.clear();
     #else
-    cout << "Run in release mode." << endl;
-    window->create(modes.at(0), "Gra RPG", sf::Style::Fullscreen);
+        cout << "Run in debug mode." << endl;
+        window->create(sf::VideoMode(640, 400), "Gra RPG");
     #endif
-    modes.clear();
     window->setActive(true);
     window->setFramerateLimit(60);
     sf::Event event;

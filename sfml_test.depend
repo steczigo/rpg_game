@@ -429,3 +429,45 @@
 
 1537906313 c:\users\admin\documents\workspace\sfml_test\src\ui\ccursor.h
 
+1538834887 source:c:\users\sp\documents\workspace\rpg_game\main.cpp
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+	<vector>
+	"src/menu/CMainScreen.h"
+	"src/UI/CCursor.h"
+
+1538833428 c:\users\sp\documents\workspace\rpg_game\src\menu\cmainscreen.h
+	<SFML/Graphics.hpp>
+	"../CScreen.h"
+	"../button/CButton.h"
+	"../UI/CUIKit.h"
+
+1538833428 c:\users\sp\documents\workspace\rpg_game\src\cscreen.h
+	<vector>
+	"UI/CUIKit.h"
+
+1538833428 c:\users\sp\documents\workspace\rpg_game\src\ui\cuikit.h
+
+1538833428 c:\users\sp\documents\workspace\rpg_game\src\button\cbutton.h
+	"../UI/CUIKit.h"
+
+1538833428 c:\users\sp\documents\workspace\rpg_game\src\ui\ccursor.h
+
+1538833428 source:c:\users\sp\documents\workspace\rpg_game\src\button\cbutton.cpp
+	<SFML/Graphics.hpp>
+	"CButton.h"
+	<iostream>
+
+1538833428 source:c:\users\sp\documents\workspace\rpg_game\src\cscreen.cpp
+	<SFML/Graphics.hpp>
+	"CScreen.h"
+
+1538833428 source:c:\users\sp\documents\workspace\rpg_game\src\menu\cmainscreen.cpp
+	"CMainScreen.h"
+	<iostream>
+
+1538833428 source:c:\users\sp\documents\workspace\rpg_game\src\ui\ccursor.cpp
+	<SFML/Graphics.hpp>
+	"CCursor.h"
+
