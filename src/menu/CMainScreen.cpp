@@ -1,9 +1,11 @@
 #include "CMainScreen.h"
 #include <iostream>
+
 /***********************************************
-* \brief Main constructor of CMainScreen class.
+* \brief Constructor
 *
 * \param pointer to rendered window
+* \param pointer to texture which will display on screen
 * \return none
 *
 ***********************************************/
@@ -20,6 +22,11 @@ CMainScreen::CMainScreen(sf::RenderWindow *window, sf::Texture* tx) {
     this->przycisk->loadGUIFile(&uiActive);
 }
 
+/********************************************//**
+ * \brief Displays components on window
+ * \return void
+ *
+ ***********************************************/
 int CMainScreen::run() {
     this->przycisk->setRect(sf::Vector2i(50, 10), sf::Vector2i(284, 55));
     this->background = new sf::Sprite();
