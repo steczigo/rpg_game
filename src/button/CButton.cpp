@@ -16,6 +16,17 @@ void CButton::setText(sf::String str) {
 }
 
 /********************************************//**
+ * \brief Function is setting a button title
+ *
+ * \param std::string, title
+ * \return void
+ *
+ ***********************************************/
+void CButton::setText(std::string str) {
+    this->title = sf::String(str);
+}
+
+/********************************************//**
  * \brief Function is setting dimensions of the button
  *
  * \param sf::Vector2i, position of the box
@@ -47,6 +58,29 @@ void CButton::setRect(sf::IntRect r) {
 CButton::CButton(sf::RenderWindow* r) {
     this->window = r;
     current = new sf::Sprite();
+    focused = false;
+    clicked = false;
+    disabled = false;
+}
+
+/********************************************//**
+ * \brief Constructor
+ *
+ * \param sf::RenderWindow* ,pointer to rendered window
+ * \param sf::Texture* ,pointer to button GUI texture
+ * \param sf::IntRect ,button rect on window
+ * \param sf::String* ,title displayed on button
+ *
+ ***********************************************/
+CButton::CButton(sf::RenderWindow* r, sf::Texture *tx, sf::IntRect rect, sf::String str) {
+    this->window = r;
+    current = new sf::Sprite();
+    focused = false;
+    clicked = false;
+    disabled = false;
+    this->loadGUIFile(tx);
+    this->setRect(rect);
+    this->setText(str);
 }
 
 /********************************************//**
@@ -109,12 +143,13 @@ void CButton::stateProvider() {
     current = &active;
     setFocus(mousePointerInRect());
     setClick(mousePointerInRect() && sf::Mouse::isButtonPressed(sf::Mouse::Left));
-    current->setPosition(rect->left, rect->top);
-    //shape.setPosition(rect->left, rect->top);
-    //shape.setSize(sf::Vector2f(rect->width, rect->height));
-    if(this->clicked) this->onClick();
+
+    if(this->disabled) this->onDisable();
+    else if(this->clicked) this->onClick();
     else if(this->focused) this->onFocus();
     else this->onActive();
+
+    current->setPosition(rect->left, rect->top);
 }
 
 /********************************************//**
@@ -123,7 +158,9 @@ void CButton::stateProvider() {
  *
  ***********************************************/
 void CButton::onActive() {
-    current = &active;
+    //current = &active;
+    current->setTexture(*this->texture);
+    current->setTextureRect(sf::IntRect(13,126,284,55));
 }
 
 /********************************************//**
@@ -140,6 +177,8 @@ void CButton::onDisable() {}
  ***********************************************/
 void CButton::onFocus() {
     current = &focus;
+    current->setTexture(*this->texture);
+    current->setTextureRect(sf::IntRect(13,282,284,55));
     #ifdef _DEBUG
     cout << "Button focused." << endl;
     #endif // _DEBUG
@@ -152,6 +191,8 @@ void CButton::onFocus() {
  ***********************************************/
 void CButton::onClick() {
     current = &click;
+    current->setTexture(*this->texture);
+    current->setTextureRect(sf::IntRect(13,204,284,55));
     #ifdef _DEBUG
     cout << "Button clicked." << endl;
     #endif // _DEBUG

@@ -1,6 +1,7 @@
 #include "CMainScreen.h"
 #include <iostream>
 
+
 /***********************************************
 * \brief Constructor
 *
@@ -9,17 +10,15 @@
 * \return none
 *
 ***********************************************/
-CMainScreen::CMainScreen(sf::RenderWindow *window, sf::Texture* tx) {
+CMainScreen::CMainScreen(sf::RenderWindow *window, sf::Texture* tx, sf::Texture* ui) {
     this->window = window;
     this->backgroundTexture = tx;
-    this->przycisk = new CButton(window);
-    sf::Texture uiActive;
-    if(!uiActive.loadFromFile("images/ui_active.png")) {
-        #ifdef _DEBUG
-        std::cout << "(\"images/ui_active.png\") Loading resource failed!" << std::endl;
-        #endif // _DEBUG
-    }
-    this->przycisk->loadGUIFile(&uiActive);
+    /*this->przycisk = new CButton(window);
+    this->uiActive = ui;
+    this->przycisk->setRect(sf::Vector2i(13, 10), sf::Vector2i(284, 55));
+    this->przycisk->loadGUIFile(uiActive);*/
+    this->components.push_back(std::shared_ptr<CUIKit>(new CButton(window, ui, sf::IntRect(13, 10, 284, 55), "Start")));
+    this->components.push_back(std::shared_ptr<CUIKit>(new CButton(window, ui, sf::IntRect(13, 70, 284, 55), "Exit")));
 }
 
 /********************************************//**
@@ -28,7 +27,6 @@ CMainScreen::CMainScreen(sf::RenderWindow *window, sf::Texture* tx) {
  *
  ***********************************************/
 int CMainScreen::run() {
-    this->przycisk->setRect(sf::Vector2i(50, 10), sf::Vector2i(284, 55));
     this->background = new sf::Sprite();
     this->background->setTexture(*this->backgroundTexture);
     //this->background->setScale(1.2, 1.2);
@@ -36,7 +34,9 @@ int CMainScreen::run() {
     while(window->pollEvent(event)) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || (event.type == sf::Event::Closed)) window->close();
     }
-    przycisk->stateProvider();
+    std::for_each(components.begin(), components.end(), [this](std::unique_ptr<CUIKit> i) {
+        i->stateProvider();
+    });
     window->draw(*background);
     window->draw(*przycisk);
 }

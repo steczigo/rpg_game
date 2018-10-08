@@ -25,12 +25,13 @@ public:
     void setClickedSprite(sf::Sprite spr) { this->click = spr; }
     void setFocusedSprite(sf::Sprite spr) { this->focus = spr; }
     void setDisabledSprite(sf::Sprite spr) { this->disable = spr; }
+
+    virtual void stateProvider() = 0;
 protected:
     virtual void onClick() = 0;
     virtual void onFocus() = 0;
     virtual void onActive() = 0;
     virtual void onDisable() = 0;
-
 };
 
 #endif // CUIKIT_H_INCLUDED

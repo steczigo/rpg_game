@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "src/menu/CMainScreen.h"
 #include "src/UI/CCursor.h"
 
@@ -42,7 +43,7 @@ int main() {
         #endif // _DEBUG
     }
     CCursor* mousePointer = new CCursor(window, uiActive);
-    CMainScreen* mainScreen = new CMainScreen(window, &mainscr);
+    CMainScreen* mainScreen = new CMainScreen(window, &mainscr, &uiActive);
     while(window->isOpen()) {
         window->clear(sf::Color::White);
         switch(mainScreen->run()) {

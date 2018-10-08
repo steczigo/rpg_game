@@ -8,18 +8,22 @@ private:
     sf::String title;
     sf::IntRect* rect;
     sf::Vector2i mousePos;
-    sf::RectangleShape shape;
     sf::Texture* texture;
+    sf::Font font;
 public:
     CButton(sf::RenderWindow*);
+    CButton(sf::RenderWindow*, sf::Texture *,  sf::IntRect, sf::String);
+    ~CButton();
+
     void setText(sf::String);
     void setRect(sf::Vector2i, sf::Vector2i);
     void setRect(sf::IntRect);
     bool isClicked();
     bool isFocused();
-    ~CButton();
-    void stateProvider();
     void loadGUIFile(sf::Texture* t);
+    void setText(std::string);
+
+    virtual void stateProvider();
     virtual void onFocus();
     virtual void onClick();
     virtual void onDisable();
