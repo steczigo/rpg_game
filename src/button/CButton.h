@@ -1,25 +1,34 @@
 #ifndef CBUTTON_H_INCLUDED
 #define CBUTTON_H_INCLUDED
 
-class CButton : public sf::Drawable {
-private:
-    sf::Window * window;
-    sf::String title;
-    sf::IntRect * rect;
-    bool clicked;
-    bool focused;
-    sf::Vector2i mousePos;
+#include "../UI/CUIKit.h"
+
+class CButton : public CUIKit {
 public:
-    void setText(sf::String);
-    void setRect(sf::Vector2i, sf::Vector2i);
-    void setRect(sf::IntRect r);
-    bool isClicked();
-    bool isFocused();
-    virtual void draw(sf::RenderTarget &target, const sf::RenderStates states );
-    ~CButton();
-private:
+    CButton(sf::RenderWindow*);
+    CButton(sf::RenderWindow*, sf::Texture *,sf::IntRect, sf::IntRect, sf::IntRect, sf::IntRect ,sf::IntRect, sf::String);
+    virtual ~CButton();
+
+    virtual void setText(sf::String);
+    virtual void setRect(sf::Vector2i, sf::Vector2i);
+    virtual void setRect(sf::IntRect);
+    virtual bool isClicked();
+    virtual bool isFocused();
+    virtual void loadGUIFile(sf::Texture* t);
+    virtual void setText(std::string);
+    virtual float set_text_position(std::string, sf::IntRect);
+
+    virtual void stateProvider();
+    virtual void onFocus();
+    virtual void onClick();
+    virtual void onDisable();
+    virtual void onActive();
+protected:
+    virtual void setFocus(bool);
+    virtual void setClick(bool);
     bool mousePointerInRect();
-    void setFocus(bool);
+    virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
+
 };
 
 #endif // CBUTTON_H_INCLUDED

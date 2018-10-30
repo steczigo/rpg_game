@@ -1,0 +1,10 @@
+#ifndef TEXTURERECT_H_INCLUDED
+#define TEXTURERECT_H_INCLUDED
+
+#define BUTTON_FOCUS sf::IntRect(13,282,284,55)
+#define BUTTON_ACTIVE sf::IntRect(13,126,284,55)
+#define BUTTON_CLICK sf::IntRect(13,204,284,55)
+#define BUTTON_DISABLE sf::IntRect(13,204,284,55)
+#define MENU_BUTTON(pos, text) new CButton(window, ui, BUTTON_ACTIVE, BUTTON_CLICK, BUTTON_FOCUS, BUTTON_DISABLE, (pos), (text))
+
+#endif // TEXTURERECT_H_INCLUDED

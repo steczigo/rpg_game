@@ -4,23 +4,18 @@
 #include <SFML/Graphics.hpp>
 #include "../CScreen.h"
 #include "../button/CButton.h"
+#include "../UI/CUIKit.h"
 
 class CMainScreen : public CScreen {
-// Variables
-public:
-
-protected:
-
 private:
-    CButton* przycisk;
-    sf::RenderWindow *window;
-
+    sf::Texture* backgroundTexture, *uiActive;
+    sf::Sprite* background;
 //Methods
 public:
-    CMainScreen(sf::RenderWindow *window);
-    virtual int run();
-protected:
+    CMainScreen(sf::RenderWindow *window, sf::Texture* tx, sf::Texture* ui);
+    ~CMainScreen();
 
+    virtual int run();
 private:
     void showMenu();
 };
